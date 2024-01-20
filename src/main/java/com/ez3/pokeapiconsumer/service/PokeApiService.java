@@ -15,6 +15,11 @@ public class PokeApiService {
         this.restTemplate = restTemplate;
     }
 
+
+/**
+ * @param pokemonName El nombre del Pokémon del cual se desea obtener la información.
+ * @return Un objeto Pokemon que contiene detalles sobre el Pokémon especificado.
+ **/
     public Pokemon getPokemonInfo(String pokemonName) {
         String url = apiUrl + "pokemon/" + pokemonName;
         return restTemplate.getForObject(url, Pokemon.class);
