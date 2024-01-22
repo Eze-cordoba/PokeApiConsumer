@@ -18,14 +18,21 @@ public class PokemonController {
     @Autowired
     private  PokeApiService pokeApiService;
 
+
+
+    /**
+     * Maneja las solicitudes GET para obtener información sobre un Pokémon específico.
+     *
+     * @param pokemonName El nombre del Pokémon para el cual se desea obtener la información.
+     * @return ResponseEntity con el Pokémon encontrado o un mensaje de error.
+     */
     @GetMapping("/{pokemonName}")
     public ResponseEntity<?> getPokemonInfo(@PathVariable String pokemonName) {
         try {
-          Pokemon pokemon= pokeApiService.getPokemonInfo(pokemonName);
+
+            Pokemon pokemon= pokeApiService.getPokemonInfo(pokemonName);
 
             return ResponseEntity.ok(pokemon);
-
-
 
         } catch (HttpClientErrorException.NotFound notFoundException) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
